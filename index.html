@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+    <div id = "app">
+    <input type="number" placeholder="Primeiro número" v-model="primeiro">
+    <input type="number" placeholder="Segundo número" v-model="segundo">
+
+    <select v-model="selected">
+        <option v-for="opcao in opcoes">
+            {{opcao.text}}
+        </option>
+        </select>
+        <button v-on:click="calcular">Calcular</button>
+        <span style="color: red;">{{resultado}}</span>
+    </div>
+        <script>
+        let app = new Vue({
+            el: "#app",
+            data:{
+                primeiro: 0,
+                segundo: 0,
+                operacao: 0,
+                selected: 'A',
+                resultado: 0,
+                opcoes: [
+                    {text: 'Multiplicar', value: 'A'},
+                    {text: 'Dividir', value: 'B'},
+                    {text: 'Adição', value: 'C'},
+                    {text: 'Subtrair', value: 'D'}
+                ]
+            },
+            methods: {
+                calcular: function(){
+                    if(this.selected == 'Multiplicar'){
+                        this.resultado = this.primeiro*this.segundo
+                    }
+                    else if (this.selected == 'Dividir'){
+                        this.resultado= this.primeiro/this.segundo
+                    }
+                    else if (this.selected == 'Adição'){
+                        this.resultado = this.primeiro+this.segundo
+                    }
+                    else if (this.selected == 'Subtrair'){
+                        this.resultado = this.primeiro-this.segundo
+                    }
+                
+                
+                }
+            }
+        })
+    </script>
+</body>
+</html>
